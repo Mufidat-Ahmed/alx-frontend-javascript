@@ -1,11 +1,15 @@
-export default function updateStudentGradeByCity(students, city, newGrades) {
-  return students
-    .filter(student => student.location === city)
-    .map(student => {
-      const gradeObj = newGrades.find(grade => grade.studentId === student.id);
-      return {
-	      ...student,
-              grade: gradeObj ? gradeObj.grade : 'N/A'
-      };
-    });
+function updateUniqueItems(groceriesMap) {
+  if (!(groceriesMap instanceof Map)) {
+    throw new Error('Cannot process');
+  }
+
+  for (const [key, value] of groceriesMap.entries()) {
+    if (value === 1) {
+      groceriesMap.set(key, 100);
+    }
+  }
+
+  return groceriesMap;
 }
+
+export default updateUniqueItems;
